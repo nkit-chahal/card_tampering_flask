@@ -46,9 +46,29 @@
             <button type="submit" class="btn-large" style="background-color: #5e72e4">Check</button>
           </div>
         </form>
-       	<div style="text-align: center; padding-top: 50px">
-      		<h5>{{pred}}</h5>
-     	</div>
+        {% if pred %}
+        <div style="text-align: center; padding-top: 50px">
+                <h5>Similarity: {{pred}}</h5>
+        </div>
+        <div class="row" style="padding-top:20px">
+            <div class="col s3 center">
+                <img src="{{original}}" class="responsive-img" alt="Original">
+                <p>Original</p>
+            </div>
+            <div class="col s3 center">
+                <img src="{{uploaded}}" class="responsive-img" alt="Uploaded">
+                <p>Uploaded</p>
+            </div>
+            <div class="col s3 center">
+                <img src="{{diff}}" class="responsive-img" alt="Difference">
+                <p>Difference</p>
+            </div>
+            <div class="col s3 center">
+                <img src="{{thresh}}" class="responsive-img" alt="Threshold">
+                <p>Threshold</p>
+            </div>
+        </div>
+        {% endif %}
 
       </div>
       <br><br>
