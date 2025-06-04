@@ -62,7 +62,17 @@ def index():
                 cv2.imwrite(os.path.join(app.config['GENERATED_FILE'], 'image_uploaded.jpg'), uploaded_image)
                 cv2.imwrite(os.path.join(app.config['GENERATED_FILE'], 'image_diff.jpg'), diff)
                 cv2.imwrite(os.path.join(app.config['GENERATED_FILE'], 'image_thresh.jpg'), thresh)
-                return render_template('index.html',pred=str(round(score*100,2)) + '%' + ' correct')
+
+                # Paths for generated images to display on the result page
+                result_args = {
+                    'pred': f"{round(score*100, 2)}% match",
+                    'original': 'static/generated/image_original.jpg',
+                    'uploaded': 'static/generated/image_uploaded.jpg',
+                    'diff': 'static/generated/image_diff.jpg',
+                    'thresh': 'static/generated/image_thresh.jpg',
+                }
+
+                return render_template('index.html', **result_args)
        
 # Main function
 if __name__ == '__main__':
